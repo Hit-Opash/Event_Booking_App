@@ -45,6 +45,7 @@ class RadiusSize {
   static const double R_18 = 18;
   static const double R_20 = 20;
   static const double R_22 = 22;
+  static const double R_30 = 30;
   static const double R_40 = 40;
   static const double R_44 = 44;
   static const double R_48 = 48;

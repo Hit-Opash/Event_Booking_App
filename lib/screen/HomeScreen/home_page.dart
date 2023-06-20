@@ -1,9 +1,12 @@
 import 'package:event_booking_app/_sharedUtils/images.dart';
 import 'package:event_booking_app/_sharedUtils/strings.dart';
 import 'package:event_booking_app/_sharedWidget/custom_widget/appbar.dart';
+import 'package:event_booking_app/_sharedWidget/event_card.dart';
 import 'package:event_booking_app/model/menu.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
+import 'package:event_booking_app/screen/EventDetailsScreen/event_details_page.dart';
+import 'package:event_booking_app/screen/EventsTab/events_tab.dart';
 import 'package:event_booking_app/screen/MyProfileScreen/myprofile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,11 +26,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
   int _selectedIndex = 0;
+
+  void initState() {
+    _selectedIndex = 0;
+    // TODO: implement initState
+    super.initState();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == 1) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EventsTab(),
+            ));
+      }
     });
   }
 
@@ -258,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 transform: Matrix4.translationValues(0.0, widthBased(-40), .0),
                 width: screenWidth * 0.9,
-                height: heightBased(40),
+                height: (40),
                 margin: EdgeInsets.only(top: heightBased(20)),
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
@@ -284,12 +300,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Text(
                               typeOfEvent[index].title,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                    color: Colors.white,
-                                  ),
+                              style:
+                                  TextStyle(fontSize: fontPixel(FontSizes.F_15))
+                                      .copyWith(
+                                color: Colors.white,
+                              ),
                             ),
                           ],
                         ),
@@ -300,6 +315,63 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: widthBased(Space.S_10),
                   ),
                 ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                    width: screenWidth * 0.9,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              Strings.Upcoming_Events,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(fontWeight: FontWeight.w500),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Row(
+                                children: [
+                                  Text(
+                                    Strings.See_All,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(color: Color(0xFF747688)),
+                                  ),
+                                  const Icon(
+                                    Icons.arrow_right_rounded,
+                                    color: Color(0xFF747688),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(children: [
+                              const EventCard(),
+                              SizedBox(
+                                width: widthBased(Space.S_10),
+                              ),
+                              const EventCard(),
+                              SizedBox(
+                                width: widthBased(Space.S_10),
+                              ),
+                              const EventCard()
+                            ]),
+                          ),
+                        ),
+                      ],
+                    )),
               ),
             ],
           ),

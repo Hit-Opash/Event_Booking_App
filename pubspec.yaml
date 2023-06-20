@@ -69,6 +69,7 @@ flutter:
     - assets/images/HomeScreen/    
     - assets/images/BottomTab/
     - assets/images/ProfileScreen/
+    - assets/images/EventsTab/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

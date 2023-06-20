@@ -70,4 +70,21 @@ class Strings {
   static const String About_Me = 'About Me';
   static const String Interest = 'Interest';
   static const String Change = 'Change';
+  static const String Nearby_You = 'Nearby You';
+  static const String Hero_Animation_Tag = 'eventLogo';
+  static const String Event_Details = 'Event Details';
+  static const String Invite = 'Invite';
+  static const String Buy_Ticket = 'Buy Ticket \$120';
+  static const String About_Event = 'About Event';
+
+  static const String UPCOMING = 'UPCOMING';
+  static const String PAST_EVENTS = 'PAST EVENTS';
+  static const String No_Upcoming_Event = 'No Upcoming Event';
+  static const String Events_D1 = 'Lorem ipsum dolor sit amet, consectetur';
+  static const String Explore_Events = 'Explore Events';
+
+  static const String Follow = 'Follow';
+  static const String About = 'About';
+  static const String Event = 'Event';
+  static const String Reviews = 'Reviews';
 }

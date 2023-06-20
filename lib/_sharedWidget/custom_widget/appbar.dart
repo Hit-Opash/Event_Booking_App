@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      // onTap: () => Scaffold.of(context).openDrawer(),
+                      onTap: () => Scaffold.of(context).openDrawer(),
                       child: SvgPicture.asset(
                         Images.drawerBar,
                         fit: BoxFit.scaleDown,

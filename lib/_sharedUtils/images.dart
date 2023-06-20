@@ -40,9 +40,15 @@ class Images {
       'assets/images/HomeScreen/Notification.svg';
   static const String search = 'assets/images/HomeScreen/Search.svg';
   static const String sports = 'assets/images/HomeScreen/Sports.svg';
-  static const String user_1 = 'assets/images/HomeScreen/User_1.svg';
-  static const String user_2 = 'assets/images/HomeScreen/User_2.svg';
-  static const String user_3 = 'assets/images/HomeScreen/User_3.svg';
+  static const String user_1 = 'assets/images/HomeScreen/User_1.png';
+  static const String user_2 = 'assets/images/HomeScreen/User_2.png';
+  static const String user_3 = 'assets/images/HomeScreen/User_3.png';
+
+  static const String event_1 = 'assets/images/HomeScreen/event_1.png';
+  static const String event_2 = 'assets/images/HomeScreen/event_2.png';
+  static const String event_3 = 'assets/images/HomeScreen/event_3.png';
+  static const String event_4 = 'assets/images/HomeScreen/event_4.png';
+  static const String event_5 = 'assets/images/HomeScreen/event_5.png';
 
   static const String bottomTab_Events = 'assets/images/BottomTab/Events.svg';
   static const String bottomTab_Explore = 'assets/images/BottomTab/Explore.svg';
@@ -52,4 +58,6 @@ class Images {
   static const String edit_profile =
       'assets/images/ProfileScreen/Edit_Profile.svg';
   static const String edit_pen = 'assets/images/ProfileScreen/Edit_Pen.svg';
+
+  static const String No_Event = 'assets/images/EventsTab/No_Event.svg';
 }
