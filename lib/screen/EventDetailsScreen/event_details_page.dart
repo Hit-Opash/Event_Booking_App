@@ -1,6 +1,7 @@
 import 'package:event_booking_app/_sharedUtils/images.dart';
 import 'package:event_booking_app/_sharedUtils/strings.dart';
 import 'package:event_booking_app/_sharedWidget/custom_widget/button.dart';
+import 'package:event_booking_app/_sharedWidget/invite_friend_model.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,18 @@ class EventDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _invitePress() {
+      showModalBottomSheet(
+        // useSafeArea: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(RadiusSize.R_30)),
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => const FractionallySizedBox(
+            heightFactor: 0.9, child: InviteFriendModel()),
+      );
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -130,7 +143,7 @@ class EventDetailsScreen extends StatelessWidget {
                         ],
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: _invitePress,
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
                             shape: RoundedRectangleBorder(
@@ -282,7 +295,7 @@ class EventDetailsScreen extends StatelessWidget {
                             ],
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: _invitePress,
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Theme.of(context)
                                     .colorScheme

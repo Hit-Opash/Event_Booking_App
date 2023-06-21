@@ -1,5 +1,6 @@
 import 'package:event_booking_app/_sharedUtils/images.dart';
 import 'package:event_booking_app/_sharedUtils/strings.dart';
+import 'package:event_booking_app/_sharedWidget/filtter_event_model.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,21 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _filtterEventPress() {
+      showModalBottomSheet(
+        useSafeArea: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+                top: Radius.circular(heightBased(RadiusSize.R_30)))),
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => const FractionallySizedBox(
+          heightFactor: 0.9,
+          child: FiltterEventModel(),
+        ),
+      );
+    }
+
     return Container(
       width: double.infinity,
       padding: EdgeInsets.only(bottom: widthBased(Space.S_50)),
@@ -39,19 +55,13 @@ class CustomAppBar extends StatelessWidget {
                       children: [
                         Text(
                           Strings.Current_Location,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
+                          style: TextStyle(fontSize: 12)
                               .copyWith(color: Colors.white),
                         ),
                         Text(
                           'New Yourk, USA',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: 13).copyWith(
+                              color: Colors.white, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -93,21 +103,24 @@ class CustomAppBar extends StatelessWidget {
                           color: Color(0xFF5D56F3),
                           borderRadius: BorderRadius.all(
                               Radius.circular(RadiusSize.R_48))),
-                      child: (Row(
-                        children: [
-                          SvgPicture.asset(Images.filter),
-                          SizedBox(
-                            width: widthBased(Space.S_4),
-                          ),
-                          Text(
-                            Strings.Filters,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .copyWith(color: Colors.white),
-                          )
-                        ],
-                      )),
+                      child: InkWell(
+                        onTap: _filtterEventPress,
+                        child: (Row(
+                          children: [
+                            SvgPicture.asset(Images.filter),
+                            SizedBox(
+                              width: widthBased(Space.S_4),
+                            ),
+                            Text(
+                              Strings.Filters,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(color: Colors.white),
+                            )
+                          ],
+                        )),
+                      ),
                     )
                   ],
                 )

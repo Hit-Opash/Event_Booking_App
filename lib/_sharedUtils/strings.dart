@@ -42,7 +42,7 @@ class Strings {
   static const String Send = 'Send ';
 
   static const String My_Profile = 'My Profile';
-  static const String Massage = 'Massage';
+  static const String Message = 'Message';
   static const String Calender = 'Calender';
   static const String Bookmark = 'Bookmark';
   static const String Contact_Us = 'Contact Us';
@@ -87,4 +87,23 @@ class Strings {
   static const String About = 'About';
   static const String Event = 'Event';
   static const String Reviews = 'Reviews';
+
+  static const String Notification = 'Notification';
+  static const String No_Notifications = 'No Notifications!';
+  static const String No_Notifications_D1 =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor';
+
+  static const String Reject = 'Reject';
+  static const String Accept = 'Accept';
+  static const String Invite_Friend = 'Invite Friend';
+
+  static const String Time_Date = 'Time & Date';
+  static const String Today = 'Today';
+  static const String Tomorrow = 'Tomorrow';
+  static const String This_Week = 'This week';
+  static const String Choose_From_Calender = 'Choose from calender';
+  static const String Location = 'Location';
+  static const String Select_Price_Range = 'Select price range';
+  static const String Reset = 'Reset';
+  static const String Apply = 'Apply';
 }

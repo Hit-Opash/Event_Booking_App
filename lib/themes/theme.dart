@@ -11,6 +11,7 @@ class CustomThemeData {
 
   static ThemeData lightThemeData =
       themeData(lightColorScheme, _lightFocusColor);
+
   static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor);
 
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {

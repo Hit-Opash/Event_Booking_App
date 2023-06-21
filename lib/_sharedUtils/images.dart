@@ -60,4 +60,9 @@ class Images {
   static const String edit_pen = 'assets/images/ProfileScreen/Edit_Pen.svg';
 
   static const String No_Event = 'assets/images/EventsTab/No_Event.svg';
+  static const String No_Notification =
+      'assets/images/NotificationScreen/no_notification.svg';
+
+  static const String Select = 'assets/images/ModelSheet/Select.svg';
+  static const String No_Select = 'assets/images/ModelSheet/No_Select.svg';
 }

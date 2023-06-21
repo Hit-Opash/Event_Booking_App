@@ -8,6 +8,7 @@ import 'package:event_booking_app/scale/sizes.dart';
 import 'package:event_booking_app/screen/EventDetailsScreen/event_details_page.dart';
 import 'package:event_booking_app/screen/EventsTab/events_tab.dart';
 import 'package:event_booking_app/screen/MyProfileScreen/myprofile_page.dart';
+import 'package:event_booking_app/screen/NotificationScreen/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -31,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     _selectedIndex = 0;
-    // TODO: implement initState
     super.initState();
   }
 
@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => EventsTab(),
+              builder: (context) => const EventsTab(),
             ));
       }
     });
@@ -53,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: ListView(
@@ -65,7 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            Images.common_profile_pic,
+                            height: 60,
+                            width: 60,
+                            Images.profile,
+                            fit: BoxFit.fill,
+                          ),
+                          const SizedBox(
+                            height: 12,
                           ),
                           Text(
                             'Ashfak Sayem',
@@ -75,15 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     ListTile(
-                      title: Text(
+                      title: const Text(
                         Strings.My_Profile,
-                        style: Theme.of(context).textTheme.labelLarge,
+                        style: TextStyle(fontSize: FontSizes.F_16),
                       ),
                       leading: SvgPicture.asset(Images.drawer_profile),
                       onTap: () {
                         // Update the state of the app
                         // ...
                         // Then close the drawer
+                        Navigator.pop(context);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -93,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ListTile(
                       title: Text(
-                        Strings.Massage,
+                        Strings.Message,
                         style: Theme.of(context).textTheme.labelLarge,
                       ),
                       leading: SvgPicture.asset(Images.message),
@@ -102,6 +110,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         // ...
                         // Then close the drawer
                         Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const NotificationScreen(),
+                            ));
                       },
                     ),
                     ListTile(
@@ -187,24 +200,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 padding: EdgeInsets.symmetric(
-                    vertical: heightBased(14), horizontal: 24),
+                    vertical: widthBased(14), horizontal: widthBased(14)),
+                margin: const EdgeInsets.only(left: 24),
                 decoration: BoxDecoration(
-                    color: const Color(0xFF00F8FF).withOpacity(0.20),
+                    color: const Color(0xFF00F8FF).withOpacity(0.10),
                     borderRadius: const BorderRadius.all(
                         Radius.circular(RadiusSize.R_8))),
-                child: Row(children: [
-                  SvgPicture.asset(Images.upgradePro),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  Text(
-                    Strings.UpgradePro,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(color: const Color(0xFF00F8FF)),
-                  )
-                ]),
+                child: FittedBox(
+                  child: Row(children: [
+                    SvgPicture.asset(Images.upgradePro),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Text(
+                      Strings.UpgradePro,
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: const Color(0xFF00F8FF)),
+                    )
+                  ]),
+                ),
               )
             ],
           ),
@@ -254,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
               spreadRadius: 8,
               blurRadius: 20,
-              offset: Offset(0, 8),
+              offset: const Offset(0, 8),
             ),
           ],
         ),
@@ -265,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: const Icon(Icons.add_box_sharp),
         ),
       ),
-      body: SizedBox(
+      body: SingleChildScrollView(
         child: Align(
           alignment: Alignment.center,
           child: Column(
@@ -300,9 +316,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Text(
                               typeOfEvent[index].title,
-                              style:
-                                  TextStyle(fontSize: fontPixel(FontSizes.F_15))
-                                      .copyWith(
+                              style: const TextStyle(fontSize: (FontSizes.F_15))
+                                  .copyWith(
                                 color: Colors.white,
                               ),
                             ),
@@ -316,62 +331,66 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                    width: screenWidth * 0.9,
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              Strings.Upcoming_Events,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(fontWeight: FontWeight.w500),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Row(
-                                children: [
-                                  Text(
-                                    Strings.See_All,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(color: Color(0xFF747688)),
-                                  ),
-                                  const Icon(
-                                    Icons.arrow_right_rounded,
-                                    color: Color(0xFF747688),
-                                  )
-                                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                      width: screenWidth * 0.9,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                Strings.Upcoming_Events,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(fontWeight: FontWeight.w500),
                               ),
-                            )
-                          ],
-                        ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(children: [
-                              const EventCard(),
-                              SizedBox(
-                                width: widthBased(Space.S_10),
-                              ),
-                              const EventCard(),
-                              SizedBox(
-                                width: widthBased(Space.S_10),
-                              ),
-                              const EventCard()
-                            ]),
+                              InkWell(
+                                onTap: () {},
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      Strings.See_All,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(
+                                              color: const Color(0xFF747688)),
+                                    ),
+                                    const Icon(
+                                      Icons.arrow_right_rounded,
+                                      color: Color(0xFF747688),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
-                        ),
-                      ],
-                    )),
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(children: [
+                                const EventCard(),
+                                SizedBox(
+                                  width: widthBased(Space.S_10),
+                                ),
+                                const EventCard(),
+                                SizedBox(
+                                  width: widthBased(Space.S_10),
+                                ),
+                                const EventCard()
+                              ]),
+                            ),
+                          ),
+                        ],
+                      )),
+                ),
               ),
             ],
           ),

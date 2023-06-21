@@ -2,6 +2,8 @@ import 'package:event_booking_app/_sharedUtils/images.dart';
 import 'package:event_booking_app/_sharedUtils/strings.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
+import 'package:event_booking_app/screen/OrganizerProfileScreen/Review/review_list.dart';
+import 'package:event_booking_app/screen/OrganizerProfileScreen/organizer_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -149,7 +151,7 @@ class OrganizerProfileScreen extends StatelessWidget {
                             Images.message,
                             color: Theme.of(context).colorScheme.primary,
                           ),
-                          label: const Text(Strings.Massage)),
+                          label: const Text(Strings.Message)),
                     ),
                   ],
                 ),
@@ -179,8 +181,14 @@ class OrganizerProfileScreen extends StatelessWidget {
                   ],
                 ),
                 const Expanded(
-                  child: TabBarView(
-                      children: [Text('data1'), Text('data2'), Text('data3')]),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: Space.S_20),
+                    child: TabBarView(children: [
+                      Text('data1'),
+                      OrganizerEvents(),
+                      ReviewList(),
+                    ]),
+                  ),
                 )
               ],
             ),

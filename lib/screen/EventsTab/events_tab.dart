@@ -3,6 +3,7 @@ import 'package:event_booking_app/_sharedUtils/strings.dart';
 import 'package:event_booking_app/_sharedWidget/custom_widget/button.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
+import 'package:event_booking_app/screen/AllEventsDisplayScreen/all_events_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -19,7 +20,7 @@ class EventsTab extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               Strings.Events,
-              style: TextStyle(fontSize: FontSizes.F_24),
+              style: TextStyle(fontSize: widthBased(FontSizes.F_24)),
             ),
           ),
           leading: InkWell(
@@ -43,7 +44,7 @@ class EventsTab extends StatelessWidget {
                 children: [
                   // ignore: prefer_const_literals_to_create_immutables
                   Container(
-                    height: 50,
+                    height: widthBased(50),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: Colors.grey.shade200),
@@ -55,7 +56,8 @@ class EventsTab extends StatelessWidget {
                       ),
                       unselectedLabelColor: const Color(0xFF9B9B9B),
                       labelColor: Theme.of(context).colorScheme.primary,
-                      labelStyle: const TextStyle(fontSize: FontSizes.F_15),
+                      labelStyle:
+                          TextStyle(fontSize: widthBased(FontSizes.F_15)),
                       tabs: const [
                         Tab(
                           text: Strings.UPCOMING,
@@ -68,7 +70,7 @@ class EventsTab extends StatelessWidget {
                   ),
                   Expanded(
                     child: Center(
-                      child: Container(
+                      child: SizedBox(
                         width: screenWidth * 0.7,
                         child: TabBarView(children: [
                           Column(
@@ -81,45 +83,55 @@ class EventsTab extends StatelessWidget {
                                     children: [
                                       SvgPicture.asset(
                                         Images.No_Event,
+                                        width: screenWidth * 0.4,
                                         fit: BoxFit.scaleDown,
                                       ),
-                                      const SizedBox(
-                                        height: Space.S_28,
+                                      SizedBox(
+                                        height: heightBased(Space.S_28),
                                       ),
-                                      const Center(
+                                      Center(
                                         child: Text(
                                           Strings.No_Upcoming_Event,
                                           style: TextStyle(
-                                              fontSize: FontSizes.F_24),
+                                              fontSize:
+                                                  widthBased(FontSizes.F_24)),
                                         ),
                                       ),
-                                      const SizedBox(
-                                        height: Space.S_20,
+                                      SizedBox(
+                                        height: heightBased(Space.S_20),
                                       ),
                                       Center(
                                         child: SizedBox(
                                           width: screenWidth * 0.50,
-                                          child: const Text(
+                                          child: Text(
                                             Strings.Events_D1,
                                             textAlign: TextAlign.center,
                                             softWrap: true,
                                             style: TextStyle(
                                                 color: Color(0xFF747688),
-                                                fontSize: FontSizes.F_16),
+                                                fontSize:
+                                                    widthBased(FontSizes.F_16)),
                                           ),
                                         ),
                                       ),
                                     ]),
                               ),
                               Container(
-                                margin: EdgeInsets.only(bottom: 20),
+                                margin: const EdgeInsets.only(bottom: 20),
                                 child: CustomButton(
                                     lable: Strings.Explore_Events,
-                                    onPress: () {}),
+                                    onPress: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const AllEventsDisplayScreen(),
+                                          ));
+                                    }),
                               ),
                             ],
                           ),
-                          Text('data2'),
+                          const Text('data2'),
                           // MyPostTab(),
                           // MyReelsTab(),
                           // MyTagTab(),

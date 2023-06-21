@@ -28,21 +28,24 @@ class CustomButton extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: const Color(0xFF5669FF),
-                  blurRadius: heightBased(10),
+                  blurRadius: widthBased(10),
                 )
               ],
               color: Theme.of(context).colorScheme.primary,
               borderRadius:
-                  BorderRadius.all(Radius.circular(heightBased(Space.S_16)))),
+                  BorderRadius.all(Radius.circular(widthBased(Space.S_15)))),
           child: Stack(
             alignment: Alignment.center,
             children: [
               Text(
                 lable.toUpperCase(),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondary,
-                    ),
+                style: TextStyle(
+                        color: Colors.white,
+                        fontSize: widthBased(FontSizes.F_16))
+                    .copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
               ),
               Positioned(
                 right: 0,

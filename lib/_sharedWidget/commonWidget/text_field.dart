@@ -7,11 +7,16 @@ import 'package:flutter_svg/svg.dart';
 
 class CommonTextField extends StatelessWidget {
   const CommonTextField(
-      {super.key, this.hintText, this.prefixIcon, this.suffixIcon});
+      {super.key,
+      this.hintText,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.suffixIconColor});
 
   final String? hintText;
   final String? prefixIcon;
   final String? suffixIcon;
+  final Color? suffixIconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +32,7 @@ class CommonTextField extends StatelessWidget {
               ? SvgPicture.asset(
                   suffixIcon!,
                   fit: BoxFit.scaleDown,
+                  color: suffixIconColor,
                 )
               : null,
           border: OutlineInputBorder(
