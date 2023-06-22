@@ -20,23 +20,24 @@ class EventsTab extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               Strings.Events,
-              style: TextStyle(fontSize: widthBased(FontSizes.F_24)),
+              style: TextStyle(fontSize: heightBased(FontSizes.F_24)),
             ),
           ),
           leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: SvgPicture.asset(
-              Images.back,
-              fit: BoxFit.scaleDown,
-            ),
-          ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(
+                Icons.arrow_back,
+                size: heightBased(22),
+                color: const Color(0xFF120D26),
+              )),
         ),
         body: SafeArea(
           child: Center(
-            child: SizedBox(
+            child: Container(
               width: screenWidth * 0.9,
+              padding: EdgeInsets.only(top: heightBased(Space.S_20)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,20 +45,20 @@ class EventsTab extends StatelessWidget {
                 children: [
                   // ignore: prefer_const_literals_to_create_immutables
                   Container(
-                    height: widthBased(50),
+                    height: heightBased(50),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
+                        borderRadius: BorderRadius.circular((heightBased(100))),
                         color: Colors.grey.shade200),
                     child: TabBar(
                       padding: const EdgeInsets.all(Space.S_4),
                       indicator: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(heightBased(20)),
                       ),
                       unselectedLabelColor: const Color(0xFF9B9B9B),
                       labelColor: Theme.of(context).colorScheme.primary,
                       labelStyle:
-                          TextStyle(fontSize: widthBased(FontSizes.F_15)),
+                          TextStyle(fontSize: heightBased(FontSizes.F_15)),
                       tabs: const [
                         Tab(
                           text: Strings.UPCOMING,
@@ -71,7 +72,7 @@ class EventsTab extends StatelessWidget {
                   Expanded(
                     child: Center(
                       child: SizedBox(
-                        width: screenWidth * 0.7,
+                        width: screenWidth * 0.9,
                         child: TabBarView(children: [
                           Column(
                             children: [
@@ -84,7 +85,7 @@ class EventsTab extends StatelessWidget {
                                       SvgPicture.asset(
                                         Images.No_Event,
                                         width: screenWidth * 0.4,
-                                        fit: BoxFit.scaleDown,
+                                        fit: BoxFit.contain,
                                       ),
                                       SizedBox(
                                         height: heightBased(Space.S_28),
@@ -94,7 +95,7 @@ class EventsTab extends StatelessWidget {
                                           Strings.No_Upcoming_Event,
                                           style: TextStyle(
                                               fontSize:
-                                                  widthBased(FontSizes.F_24)),
+                                                  heightBased(FontSizes.F_24)),
                                         ),
                                       ),
                                       SizedBox(
@@ -109,15 +110,18 @@ class EventsTab extends StatelessWidget {
                                             softWrap: true,
                                             style: TextStyle(
                                                 color: Color(0xFF747688),
-                                                fontSize:
-                                                    widthBased(FontSizes.F_16)),
+                                                fontSize: heightBased(
+                                                    FontSizes.F_16)),
                                           ),
                                         ),
                                       ),
                                     ]),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(bottom: 20),
+                                margin: EdgeInsets.only(
+                                    bottom: heightBased(20),
+                                    left: screenWidth * 0.1,
+                                    right: screenWidth * 0.1),
                                 child: CustomButton(
                                     lable: Strings.Explore_Events,
                                     onPress: () {

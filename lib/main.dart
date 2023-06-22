@@ -29,7 +29,7 @@ class EventBookingApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomThemeData.lightThemeData,
-      home: const HomeScreen(),
+      home: const SplashPage(),
     );
   }
 }

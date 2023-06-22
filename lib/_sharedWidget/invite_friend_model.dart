@@ -15,7 +15,7 @@ class InviteFriendModel extends StatelessWidget {
     return Center(
       child: Container(
         padding: EdgeInsets.symmetric(
-            horizontal: screenWidth * 0.05, vertical: Space.S_34),
+            horizontal: screenWidth * 0.05, vertical: heightBased(Space.S_34)),
         child: Stack(
           children: [
             Column(
@@ -41,8 +41,8 @@ class InviteFriendModel extends StatelessWidget {
                       children: [
                         Image(
                           image: const AssetImage(Images.user_1),
-                          height: widthBased(45),
-                          width: widthBased(45),
+                          height: heightBased(45),
+                          width: heightBased(45),
                           fit: BoxFit.fill,
                         ),
                         SizedBox(
@@ -54,25 +54,28 @@ class InviteFriendModel extends StatelessWidget {
                             Text(
                               'Alex Lees',
                               style: TextStyle(
-                                  fontSize: widthBased(FontSizes.F_14)),
+                                  fontSize: fontPixel(FontSizes.F_16)),
                             ),
                             Text(
                               '24 Followers',
                               style: TextStyle(
                                   color: const Color(0xFF747688),
-                                  fontSize: widthBased(FontSizes.F_12)),
+                                  fontSize: fontPixel(FontSizes.F_13)),
                             )
                           ],
                         ),
                       ],
                     ),
-                    SvgPicture.asset(Images.Select),
+                    SvgPicture.asset(
+                      Images.Select,
+                      height: heightBased(24),
+                    ),
                   ],
                 ),
               ],
             ),
             Positioned(
-              bottom: 30,
+              bottom: heightBased(20),
               left: screenWidth * 0.1,
               right: screenWidth * 0.1,
               child: CustomButton(

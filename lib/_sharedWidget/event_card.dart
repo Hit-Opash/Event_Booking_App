@@ -16,13 +16,13 @@ class EventCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(heightBased(RadiusSize.R_18))),
       child: Container(
-        width: widthBased(255),
+        width: heightBased(255),
         padding: EdgeInsets.all(heightBased(Space.S_10)),
         child: Column(
           children: [
             Container(
               width: double.infinity,
-              height: screenWidth * 0.3,
+              height: heightBased(150),
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(Images.event_1), fit: BoxFit.fill)),
@@ -32,23 +32,26 @@ class EventCard extends StatelessWidget {
                 children: [
                   Card(
                     elevation: 0.3,
-                    margin: EdgeInsets.all(widthBased(Space.S_10)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(heightBased(RadiusSize.R_10)))),
+                    margin: EdgeInsets.all(heightBased(Space.S_10)),
                     child: Container(
-                      padding: EdgeInsets.all(widthBased(Space.S_6)),
+                      padding: EdgeInsets.all(heightBased(Space.S_6)),
                       child: FittedBox(
                         child: Column(
                           children: [
                             Text(
                               '10',
                               style: TextStyle(
-                                  fontSize: fontPixel(FontSizes.F_18),
+                                  fontSize: fontPixel(FontSizes.F_16),
                                   color: const Color(0xFFF0635A),
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
                               'JUNE',
                               style: TextStyle(
-                                  fontSize: fontPixel(FontSizes.F_18),
+                                  fontSize: fontPixel(FontSizes.F_14),
                                   color: const Color(0xFFF0635A),
                                   fontWeight: FontWeight.w500),
                             )
@@ -59,12 +62,16 @@ class EventCard extends StatelessWidget {
                   ),
                   Card(
                     elevation: 0.3,
-                    margin: EdgeInsets.all(widthBased(Space.S_10)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(heightBased(RadiusSize.R_4)))),
+                    margin: EdgeInsets.all(heightBased(Space.S_10)),
                     child: Container(
-                      padding: EdgeInsets.all(widthBased(Space.S_4)),
-                      child: const Icon(
+                      padding: EdgeInsets.all(heightBased(Space.S_4)),
+                      child: Icon(
                         Icons.bookmark,
-                        color: Color(0xFFEB5757),
+                        size: heightBased(20),
+                        color: const Color(0xFFEB5757),
                       ),
                     ),
                   )
@@ -79,7 +86,7 @@ class EventCard extends StatelessWidget {
                   )),
               child: Container(
                 padding:
-                    EdgeInsets.symmetric(horizontal: widthBased(Space.S_8)),
+                    EdgeInsets.symmetric(horizontal: heightBased(Space.S_8)),
                 child: Column(
                   children: [
                     SizedBox(
@@ -106,27 +113,27 @@ class EventCard extends StatelessWidget {
                             Transform(
                               transform: Matrix4.translationValues(0.0, 0, 0),
                               child: Image(
-                                height: widthBased(30),
-                                width: widthBased(30),
+                                height: heightBased(30),
+                                width: heightBased(30),
                                 fit: BoxFit.cover,
                                 image: const AssetImage(Images.user_1),
                               ),
                             ),
                             Transform(
                                 transform: Matrix4.translationValues(
-                                    widthBased(-10.0), 0, 0),
+                                    heightBased(-10.0), 0, 0),
                                 child: Image(
-                                  height: widthBased(30),
-                                  width: widthBased(30),
+                                  height: heightBased(30),
+                                  width: heightBased(30),
                                   fit: BoxFit.cover,
                                   image: const AssetImage(Images.user_2),
                                 )),
                             Transform(
                                 transform: Matrix4.translationValues(
-                                    widthBased(-20.0), 0, 0),
+                                    heightBased(-20.0), 0, 0),
                                 child: Image(
-                                  height: widthBased(30),
-                                  width: widthBased(30),
+                                  height: heightBased(30),
+                                  width: heightBased(30),
                                   fit: BoxFit.cover,
                                   image: const AssetImage(Images.user_3),
                                 ))
@@ -135,7 +142,7 @@ class EventCard extends StatelessWidget {
                         Text(
                           '+20 Going',
                           style: TextStyle(
-                              color: Color(0xFF3F38DD),
+                              color: const Color(0xFF3F38DD),
                               fontSize: heightBased(FontSizes.F_12)),
                         ),
                       ],
@@ -147,7 +154,8 @@ class EventCard extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.location_on,
-                          color: Color(0xFF200E32).withOpacity(0.2),
+                          size: heightBased(16),
+                          color: const Color(0xFF200E32).withOpacity(0.2),
                         ),
                         Flexible(
                           child: Text(
@@ -157,7 +165,8 @@ class EventCard extends StatelessWidget {
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(
-                                  color: Color(0xFF200E32).withOpacity(0.6),
+                                  color:
+                                      const Color(0xFF200E32).withOpacity(0.6),
                                 ),
                           ),
                         ),

@@ -15,12 +15,12 @@ class MyProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          onTap: () => Navigator.pop(context),
-          child: SvgPicture.asset(
-            Images.back,
-            fit: BoxFit.scaleDown,
-          ),
-        ),
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back,
+              size: heightBased(22),
+              color: const Color(0xFF120D26),
+            )),
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(
@@ -77,14 +77,14 @@ class MyProfileScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    width: widthBased(Space.S_20),
+                    width: heightBased(Space.S_20),
                   ),
                   SvgPicture.asset(
                     Images.line,
                     color: const Color(0xFFDDDDDD),
                   ),
                   SizedBox(
-                    width: widthBased(Space.S_20),
+                    width: heightBased(Space.S_20),
                   ),
                   Column(
                     children: [
@@ -111,15 +111,25 @@ class MyProfileScreen extends StatelessWidget {
               ),
               OutlinedButton.icon(
                   style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.all(heightBased(Space.S_15)),
-                      shape: const RoundedRectangleBorder(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: heightBased(Space.S_20),
+                          vertical: heightBased(Space.S_8)),
+                      shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
-                              Radius.circular(RadiusSize.R_12))),
+                              Radius.circular(heightBased(RadiusSize.R_12)))),
                       side: BorderSide(
                           color: Theme.of(context).colorScheme.primary)),
                   onPressed: () {},
-                  icon: SvgPicture.asset(Images.edit_profile),
-                  label: const Text(Strings.Edit_Profile)),
+                  icon: SvgPicture.asset(
+                    Images.edit_profile,
+                    height: heightBased(24),
+                    width: heightBased(24),
+                    fit: BoxFit.cover,
+                  ),
+                  label: Text(
+                    Strings.Edit_Profile,
+                    style: TextStyle(fontSize: fontPixel(FontSizes.F_16)),
+                  )),
               SizedBox(
                 height: heightBased(Space.S_28),
               ),
@@ -141,7 +151,7 @@ class MyProfileScreen extends StatelessWidget {
                 child: Text(
                   'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More',
                   maxLines: 4,
-                  style: Theme.of(context).textTheme.labelLarge!,
+                  style: Theme.of(context).textTheme.labelMedium!,
                 ),
               ),
               SizedBox(
@@ -166,12 +176,17 @@ class MyProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                             vertical: heightBased(Space.S_6),
                             horizontal: heightBased(Space.S_10)),
-                        shape: const RoundedRectangleBorder(
+                        shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
-                                Radius.circular(RadiusSize.R_14))),
+                                Radius.circular(heightBased(RadiusSize.R_14)))),
                       ),
                       onPressed: () {},
-                      icon: SvgPicture.asset(Images.edit_pen),
+                      icon: SvgPicture.asset(
+                        Images.edit_pen,
+                        height: heightBased(15),
+                        width: heightBased(15),
+                        fit: BoxFit.cover,
+                      ),
                       label: Text(
                         Strings.Continue,
                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -187,13 +202,14 @@ class MyProfileScreen extends StatelessWidget {
                 child: Wrap(
                   children: [
                     ...interast.map((text) => Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: Space.S_8, horizontal: Space.S_15),
+                          padding: EdgeInsets.symmetric(
+                              vertical: heightBased(Space.S_8),
+                              horizontal: heightBased(Space.S_15)),
                           margin: EdgeInsets.all(heightBased(Space.S_6)),
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                               color: Colors.red,
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(RadiusSize.R_16))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  heightBased(RadiusSize.R_16)))),
                           child: Text(
                             text,
                             style: Theme.of(context)

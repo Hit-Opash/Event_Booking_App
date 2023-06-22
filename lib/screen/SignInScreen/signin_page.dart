@@ -60,19 +60,15 @@ class _SignInPageState extends State<SignInPage> {
                         textAlign: TextAlign.left,
                       ),
                     ),
-                    SizedBox(
-                        height: heightBased(60),
-                        child: const CommonTextField(
-                          hintText: Strings.UserName_Hint,
-                          prefixIcon: Images.profile,
-                        )),
-                    SizedBox(
-                        height: heightBased(60),
-                        child: const CommonTextField(
-                          hintText: Strings.Pass_Hint,
-                          prefixIcon: Images.password,
-                          suffixIcon: Images.eyeClose,
-                        )),
+                    const CommonTextField(
+                      hintText: Strings.UserName_Hint,
+                      prefixIcon: Images.profile,
+                    ),
+                    const CommonTextField(
+                      hintText: Strings.Pass_Hint,
+                      prefixIcon: Images.password,
+                      suffixIcon: Images.eyeClose,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

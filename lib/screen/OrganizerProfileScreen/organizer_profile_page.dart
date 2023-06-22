@@ -74,14 +74,14 @@ class OrganizerProfileScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      width: widthBased(Space.S_20),
+                      width: heightBased(Space.S_20),
                     ),
                     SvgPicture.asset(
                       Images.line,
                       color: const Color(0xFFDDDDDD),
                     ),
                     SizedBox(
-                      width: widthBased(Space.S_20),
+                      width: heightBased(Space.S_20),
                     ),
                     Column(
                       children: [
@@ -116,9 +116,10 @@ class OrganizerProfileScreen extends StatelessWidget {
                               backgroundColor:
                                   Theme.of(context).colorScheme.primary,
                               padding: EdgeInsets.all(heightBased(Space.S_15)),
-                              shape: const RoundedRectangleBorder(
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(
-                                      Radius.circular(RadiusSize.R_12))),
+                                      Radius.circular(
+                                          heightBased(RadiusSize.R_12)))),
                               side: BorderSide(
                                   color:
                                       Theme.of(context).colorScheme.primary)),
@@ -140,9 +141,10 @@ class OrganizerProfileScreen extends StatelessWidget {
                       child: OutlinedButton.icon(
                           style: OutlinedButton.styleFrom(
                               padding: EdgeInsets.all(heightBased(Space.S_15)),
-                              shape: const RoundedRectangleBorder(
+                              shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(
-                                      Radius.circular(RadiusSize.R_12))),
+                                      Radius.circular(
+                                          heightBased(RadiusSize.R_12)))),
                               side: BorderSide(
                                   color:
                                       Theme.of(context).colorScheme.primary)),
@@ -166,8 +168,9 @@ class OrganizerProfileScreen extends StatelessWidget {
                   ),
                   indicatorColor: Theme.of(context).colorScheme.primary,
                   indicatorWeight: 3,
-                  labelStyle: const TextStyle(
-                      fontSize: FontSizes.F_16, fontWeight: FontWeight.w500),
+                  labelStyle: TextStyle(
+                      fontSize: fontPixel(FontSizes.F_16),
+                      fontWeight: FontWeight.w500),
                   tabs: const [
                     Tab(
                       text: Strings.About,
@@ -180,10 +183,10 @@ class OrganizerProfileScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const Expanded(
+                Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(top: Space.S_20),
-                    child: TabBarView(children: [
+                    padding: EdgeInsets.only(top: heightBased(Space.S_20)),
+                    child: const TabBarView(children: [
                       Text('data1'),
                       OrganizerEvents(),
                       ReviewList(),

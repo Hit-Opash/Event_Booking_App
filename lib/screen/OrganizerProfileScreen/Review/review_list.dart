@@ -14,8 +14,8 @@ class ReviewList extends StatelessWidget {
         Row(
           children: [
             SvgPicture.asset(Images.profile),
-            const SizedBox(
-              width: Space.S_16,
+            SizedBox(
+              width: heightBased(Space.S_16),
             ),
             Flexible(
               child: Column(
@@ -26,18 +26,18 @@ class ReviewList extends StatelessWidget {
                     children: [
                       Text(
                         'Rocks Velkeinjen',
-                        style: TextStyle(fontSize: widthBased(FontSizes.F_18)),
+                        style: TextStyle(fontSize: fontPixel(FontSizes.F_18)),
                       ),
                       Text(
                         '10 FEB',
                         style: TextStyle(
-                            fontSize: widthBased(FontSizes.F_15),
-                            color: Color(0xFFADAFBB)),
+                            fontSize: fontPixel(FontSizes.F_15),
+                            color: const Color(0xFFADAFBB)),
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: Space.S_6,
+                  SizedBox(
+                    height: heightBased(Space.S_6),
                   ),
                   const Row(
                     children: [
@@ -63,13 +63,14 @@ class ReviewList extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: Space.S_10,
+                  SizedBox(
+                    height: heightBased(Space.S_10),
                   ),
-                  const Text(
+                  Text(
                     'Cinemas is the ultimate experience to see new movies in Gold Class or Vmax. Find a cinema near you.',
                     style: TextStyle(
-                        fontSize: FontSizes.F_15, color: Colors.black87),
+                        fontSize: fontPixel(FontSizes.F_15),
+                        color: Colors.black87),
                   )
                 ],
               ),

@@ -4,6 +4,7 @@ import 'package:event_booking_app/_sharedWidget/custom_widget/button.dart';
 import 'package:event_booking_app/_sharedWidget/invite_friend_model.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
+import 'package:event_booking_app/screen/OrganizerProfileScreen/organizer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,7 +17,7 @@ class EventDetailsScreen extends StatelessWidget {
       showModalBottomSheet(
         // useSafeArea: true,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(RadiusSize.R_30)),
+            borderRadius: BorderRadius.circular(heightBased(RadiusSize.R_30))),
         context: context,
         isScrollControlled: true,
         builder: (context) => const FractionallySizedBox(
@@ -28,7 +29,7 @@ class EventDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Container(
-          margin: const EdgeInsets.only(bottom: 40),
+          margin: EdgeInsets.only(bottom: heightBased(40)),
           child: Align(
             child: Column(
               children: [
@@ -50,33 +51,33 @@ class EventDetailsScreen extends StatelessWidget {
                             Row(
                               children: [
                                 InkWell(
-                                  onTap: () => Navigator.pop(context),
-                                  child: SvgPicture.asset(
-                                    Images.back,
-                                    color: Colors.white,
-                                  ),
-                                ),
+                                    onTap: () => Navigator.pop(context),
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                      size: heightBased(22),
+                                      color: Colors.white,
+                                    )),
                                 SizedBox(
                                   width: widthBased(Space.S_18),
                                 ),
-                                const Text(
+                                Text(
                                   Strings.Event_Details,
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: FontSizes.F_18),
+                                      fontSize: heightBased(FontSizes.F_18)),
                                 )
                               ],
                             ),
                             Card(
                               elevation: 0.3,
                               shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(RadiusSize.R_10)),
+                                  borderRadius: BorderRadius.circular(
+                                      heightBased(RadiusSize.R_10))),
                               color: Colors.white.withOpacity(0.1),
                               child: Container(
-                                padding: EdgeInsets.all(widthBased(Space.S_6)),
-                                child: const Icon(Icons.bookmark,
-                                    color: Colors.white),
+                                padding: EdgeInsets.all(heightBased(Space.S_6)),
+                                child: Icon(Icons.bookmark,
+                                    size: heightBased(18), color: Colors.white),
                               ),
                             ),
                           ],
@@ -87,10 +88,10 @@ class EventDetailsScreen extends StatelessWidget {
                 ),
                 Container(
                   width: screenWidth * 0.8,
-                  transform: Matrix4.translationValues(0, -30, 0),
+                  transform: Matrix4.translationValues(0, heightBased(-30), 0),
                   padding: EdgeInsets.symmetric(
-                      horizontal: (widthBased(Space.S_16)),
-                      vertical: widthBased(Space.S_8)),
+                      horizontal: (heightBased(Space.S_16)),
+                      vertical: heightBased(Space.S_8)),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       boxShadow: const [
@@ -100,7 +101,8 @@ class EventDetailsScreen extends StatelessWidget {
                           blurRadius: 20.0,
                         ),
                       ],
-                      borderRadius: BorderRadius.circular((RadiusSize.R_30))),
+                      borderRadius:
+                          BorderRadius.circular(heightBased(RadiusSize.R_30))),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -133,11 +135,11 @@ class EventDetailsScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                                 image: const AssetImage(Images.user_3),
                               )),
-                          const Text(
+                          Text(
                             '+20 Going',
                             style: TextStyle(
                                 color: Color(0xFF3F38DD),
-                                fontSize: (FontSizes.F_12),
+                                fontSize: heightBased(FontSizes.F_12),
                                 fontWeight: FontWeight.w700),
                           ),
                         ],
@@ -146,13 +148,16 @@ class EventDetailsScreen extends StatelessWidget {
                         onPressed: _invitePress,
                         style: ElevatedButton.styleFrom(
                             elevation: 0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: heightBased(Space.S_16),
+                                vertical: heightBased(Space.S_10)),
                             shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular((RadiusSize.R_8)))),
-                        child: const Text(
+                                borderRadius: BorderRadius.circular(
+                                    heightBased(RadiusSize.R_8)))),
+                        child: Text(
                           Strings.Invite,
                           style: TextStyle(
-                              fontSize: (FontSizes.F_12),
+                              fontSize: heightBased(FontSizes.F_12),
                               color: Colors.white,
                               fontWeight: FontWeight.w700),
                         ),
@@ -178,10 +183,11 @@ class EventDetailsScreen extends StatelessWidget {
                             padding: EdgeInsets.all(heightBased(Space.S_14)),
                             decoration: BoxDecoration(
                                 color: const Color(0xFF5D56F3).withOpacity(0.1),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(RadiusSize.R_12))),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    heightBased(RadiusSize.R_12)))),
                             child: Icon(
                               Icons.event_note_sharp,
+                              size: heightBased(20),
                               color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
@@ -222,6 +228,7 @@ class EventDetailsScreen extends StatelessWidget {
                                     Radius.circular(RadiusSize.R_12))),
                             child: Icon(
                               Icons.location_on,
+                              size: heightBased(20),
                               color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
@@ -255,44 +262,54 @@ class EventDetailsScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Container(
-                                padding:
-                                    EdgeInsets.all(heightBased(Space.S_14)),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFF5D56F3)
-                                        .withOpacity(0.1),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(RadiusSize.R_12))),
-                                child: Icon(
-                                  Icons.person_3,
-                                  color: Theme.of(context).colorScheme.primary,
+                          InkWell(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OrganizerProfileScreen(),
+                                )),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding:
+                                      EdgeInsets.all(heightBased(Space.S_14)),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFF5D56F3)
+                                          .withOpacity(0.1),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(RadiusSize.R_12))),
+                                  child: Icon(
+                                    Icons.person_3,
+                                    size: heightBased(20),
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: widthBased(Space.S_10),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Ashfak Sayem',
-                                    style: TextStyle(
-                                        fontSize: fontPixel(FontSizes.F_16)),
-                                  ),
-                                  SizedBox(
-                                    height: heightBased(Space.S_4),
-                                  ),
-                                  Text(
-                                    'Organizer',
-                                    style: TextStyle(
-                                        fontSize: fontPixel(FontSizes.F_12),
-                                        color: Color(0xFF747688)),
-                                  ),
-                                ],
-                              )
-                            ],
+                                SizedBox(
+                                  width: widthBased(Space.S_10),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Ashfak Sayem',
+                                      style: TextStyle(
+                                          fontSize: fontPixel(FontSizes.F_16)),
+                                    ),
+                                    SizedBox(
+                                      height: heightBased(Space.S_4),
+                                    ),
+                                    Text(
+                                      'Organizer',
+                                      style: TextStyle(
+                                          fontSize: fontPixel(FontSizes.F_12),
+                                          color: Color(0xFF747688)),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                           ElevatedButton(
                             onPressed: _invitePress,
@@ -302,13 +319,16 @@ class EventDetailsScreen extends StatelessWidget {
                                     .primary
                                     .withOpacity(0.2),
                                 elevation: 0,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: heightBased(Space.S_16),
+                                    vertical: heightBased(Space.S_10)),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
-                                        (RadiusSize.R_10)))),
+                                        heightBased(RadiusSize.R_10)))),
                             child: Text(
                               Strings.Invite,
                               style: TextStyle(
-                                fontSize: (FontSizes.F_13),
+                                fontSize: fontPixel(FontSizes.F_13),
                                 color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
@@ -321,8 +341,10 @@ class EventDetailsScreen extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             Strings.About_Event,
+                            style:
+                                TextStyle(fontSize: fontPixel(FontSizes.F_18)),
                           ),
                           SizedBox(
                             height: heightBased(Space.S_8),
@@ -330,7 +352,7 @@ class EventDetailsScreen extends StatelessWidget {
                           Text(
                             'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. Read More...',
                             style: TextStyle(
-                                fontSize: fontPixel(FontSizes.F_16),
+                                fontSize: fontPixel(FontSizes.F_15),
                                 fontWeight: FontWeight.w400),
                           ),
                           SizedBox(

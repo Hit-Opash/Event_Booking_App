@@ -29,7 +29,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: SizedBox(
           width: screenWidth * 0.9,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Align(
                 alignment: Alignment.centerLeft,
@@ -49,32 +49,24 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
-              SizedBox(
-                  height: heightBased(60),
-                  child: const CommonTextField(
-                    hintText: Strings.UserName_Hint,
-                    prefixIcon: Images.profile,
-                  )),
-              SizedBox(
-                  height: heightBased(60),
-                  child: const CommonTextField(
-                    hintText: Strings.Email_Hint,
-                    prefixIcon: Images.email,
-                  )),
-              SizedBox(
-                  height: heightBased(60),
-                  child: const CommonTextField(
-                    hintText: Strings.Pass_Hint,
-                    prefixIcon: Images.password,
-                    suffixIcon: Images.eyeClose,
-                  )),
-              SizedBox(
-                  height: heightBased(60),
-                  child: const CommonTextField(
-                    hintText: Strings.ConfirmPass_Hint,
-                    prefixIcon: Images.password,
-                    suffixIcon: Images.eyeClose,
-                  )),
+              const CommonTextField(
+                hintText: Strings.UserName_Hint,
+                prefixIcon: Images.profile,
+              ),
+              const CommonTextField(
+                hintText: Strings.Email_Hint,
+                prefixIcon: Images.email,
+              ),
+              const CommonTextField(
+                hintText: Strings.Pass_Hint,
+                prefixIcon: Images.password,
+                suffixIcon: Images.eyeClose,
+              ),
+              const CommonTextField(
+                hintText: Strings.ConfirmPass_Hint,
+                prefixIcon: Images.password,
+                suffixIcon: Images.eyeClose,
+              ),
               CustomButton(
                 lable: Strings.Sign_Up,
                 onPress: () => Navigator.push(

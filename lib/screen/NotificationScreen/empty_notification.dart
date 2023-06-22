@@ -18,23 +18,28 @@ class EmptyNotification extends StatelessWidget {
           children: [
             SvgPicture.asset(
               Images.No_Notification,
+              width: screenWidth * 0.4,
+              fit: BoxFit.cover,
             ),
             SizedBox(
               height: heightBased(Space.S_6),
             ),
-            const Text(
+            Text(
               Strings.No_Notifications,
-              style: TextStyle(fontSize: FontSizes.F_22),
+              style: TextStyle(fontSize: fontPixel(FontSizes.F_22)),
             ),
             SizedBox(
               height: heightBased(Space.S_12),
             ),
-            Text(
-              Strings.No_Notifications_D1,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: const Color(0xFF344B67),
-                  fontSize: widthBased(FontSizes.F_16)),
+            SizedBox(
+              width: screenWidth * 0.6,
+              child: Text(
+                Strings.No_Notifications_D1,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: const Color(0xFF344B67),
+                    fontSize: fontPixel(FontSizes.F_16)),
+              ),
             ),
           ],
         ),

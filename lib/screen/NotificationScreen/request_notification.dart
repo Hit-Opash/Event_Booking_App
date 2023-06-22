@@ -13,33 +13,34 @@ class RequestNotification extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Image(
+        Image(
           image: AssetImage(Images.user_1),
-          width: 45,
-          height: 45,
+          width: heightBased(45),
+          height: heightBased(45),
           fit: BoxFit.fill,
         ),
-        const SizedBox(
-          width: Space.S_14,
+        SizedBox(
+          width: heightBased(Space.S_14),
         ),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'David Silbia',
-                style: TextStyle(fontSize: FontSizes.F_18),
-              ),
-              const SizedBox(
-                height: Space.S_4,
-              ),
-              const Text(
-                'Invite Jo Malone London’s Mother’s',
-                style: TextStyle(
-                    fontSize: FontSizes.F_13, color: Color(0xFF3C3E56)),
+                style: TextStyle(fontSize: fontPixel(FontSizes.F_15)),
               ),
               SizedBox(
-                height: widthBased(Space.S_10),
+                height: heightBased(Space.S_4),
+              ),
+              Text(
+                'Invite Jo Malone London’s Mother’s',
+                style: TextStyle(
+                    fontSize: fontPixel(FontSizes.F_12),
+                    color: Color(0xFF3C3E56)),
+              ),
+              SizedBox(
+                height: heightBased(Space.S_10),
               ),
               FittedBox(
                   child: button
@@ -48,46 +49,49 @@ class RequestNotification extends StatelessWidget {
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: widthBased(Space.S_34),
-                                    vertical: widthBased(Space.S_12)),
+                                    horizontal: heightBased(Space.S_34),
+                                    vertical: heightBased(Space.S_12)),
                                 elevation: 0,
                                 backgroundColor: const Color(0xFFFFFFFF),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(RadiusSize.R_10),
+                                    borderRadius: BorderRadius.circular(
+                                        heightBased(RadiusSize.R_10)),
                                     side: const BorderSide(
                                         style: BorderStyle.solid,
                                         color: Color(0xFFEEEEEE))),
                               ),
-                              child: const Text(
+                              child: Text(
                                 Strings.Reject,
                                 style: TextStyle(
-                                  color: Color(
-                                    0xFF706D6D,
-                                  ),
-                                ),
+                                    color: Color(
+                                      0xFF706D6D,
+                                    ),
+                                    fontSize: fontPixel(FontSizes.F_14)),
                               ),
                               onPressed: () {},
                             ),
                             SizedBox(
-                              width: widthBased(Space.S_14),
+                              width: heightBased(Space.S_14),
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: widthBased(Space.S_34),
-                                    vertical: widthBased(Space.S_12)),
+                                    horizontal: heightBased(Space.S_34),
+                                    vertical: heightBased(Space.S_12)),
                                 elevation: 0,
                                 backgroundColor:
                                     Theme.of(context).colorScheme.primary,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(RadiusSize.R_10),
+                                  borderRadius: BorderRadius.circular(
+                                      heightBased(RadiusSize.R_10)),
                                 ),
                               ),
-                              child: const Text(
+                              child: Text(
                                 Strings.Accept,
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: fontPixel(FontSizes.F_14),
+                                ),
                               ),
                               onPressed: () {},
                             ),
@@ -97,13 +101,13 @@ class RequestNotification extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          width: Space.S_14,
+        SizedBox(
+          width: heightBased(Space.S_14),
         ),
         Text(
           'Just Now',
           style: TextStyle(
-              fontSize: widthBased(FontSizes.F_12),
+              fontSize: fontPixel(FontSizes.F_12),
               color: const Color(0xFF3C3E56)),
         )
       ],

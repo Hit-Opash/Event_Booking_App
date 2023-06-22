@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.toggleAnimation});
+
+  final Function() toggleAnimation;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +33,9 @@ class CustomAppBar extends StatelessWidget {
       padding: EdgeInsets.only(bottom: widthBased(Space.S_50)),
       decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
-          borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(RadiusSize.R_40),
-              bottomRight: Radius.circular(RadiusSize.R_40))),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(widthBased(RadiusSize.R_40)),
+              bottomRight: Radius.circular(widthBased(RadiusSize.R_40)))),
       child: SafeArea(
         child: Align(
           alignment: Alignment.center,
@@ -45,30 +47,35 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () => Scaffold.of(context).openDrawer(),
+                      onTap: () => toggleAnimation(),
                       child: SvgPicture.asset(
                         Images.drawerBar,
-                        fit: BoxFit.scaleDown,
+                        height: heightBased(24),
+                        width: heightBased(19),
                       ),
                     ),
                     Column(
                       children: [
                         Text(
                           Strings.Current_Location,
-                          style: TextStyle(fontSize: 12)
+                          style: TextStyle(fontSize: fontPixel(FontSizes.F_12))
                               .copyWith(color: Colors.white),
                         ),
                         Text(
                           'New Yourk, USA',
-                          style: TextStyle(fontSize: 13).copyWith(
-                              color: Colors.white, fontWeight: FontWeight.w500),
+                          style: TextStyle(fontSize: fontPixel(FontSizes.F_13))
+                              .copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
                     InkWell(
                         child: SvgPicture.asset(
                       Images.notification,
-                      fit: BoxFit.scaleDown,
+                      height: heightBased(36),
+                      width: heightBased(36),
+                      // fit: BoxFit.scaleDown,
                     ))
                   ],
                 ),
@@ -80,11 +87,18 @@ class CustomAppBar extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        SvgPicture.asset(Images.search),
+                        SvgPicture.asset(
+                          Images.search,
+                          height: heightBased(24),
+                          width: heightBased(24),
+                        ),
                         SizedBox(
                           width: widthBased(Space.S_15),
                         ),
-                        SvgPicture.asset(Images.line),
+                        SvgPicture.asset(
+                          Images.line,
+                          height: heightBased(24),
+                        ),
                         SizedBox(
                           width: widthBased(Space.S_8),
                         ),
@@ -98,16 +112,22 @@ class CustomAppBar extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      padding: EdgeInsets.all(heightBased(Space.S_6)),
-                      decoration: const BoxDecoration(
-                          color: Color(0xFF5D56F3),
+                      padding: EdgeInsets.symmetric(
+                          vertical: heightBased(Space.S_6),
+                          horizontal: heightBased(Space.S_10)),
+                      decoration: BoxDecoration(
+                          color: const Color(0xFF5D56F3),
                           borderRadius: BorderRadius.all(
-                              Radius.circular(RadiusSize.R_48))),
+                              Radius.circular(heightBased(RadiusSize.R_48)))),
                       child: InkWell(
                         onTap: _filtterEventPress,
                         child: (Row(
                           children: [
-                            SvgPicture.asset(Images.filter),
+                            SvgPicture.asset(
+                              Images.filter,
+                              height: heightBased(24),
+                              width: heightBased(24),
+                            ),
                             SizedBox(
                               width: widthBased(Space.S_4),
                             ),

@@ -23,7 +23,7 @@ class CustomButton extends StatelessWidget {
           height: heightBased(68),
           padding: EdgeInsets.symmetric(
               vertical: heightBased(Space.S_18),
-              horizontal: widthBased(Space.S_14)),
+              horizontal: heightBased(Space.S_14)),
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -33,7 +33,7 @@ class CustomButton extends StatelessWidget {
               ],
               color: Theme.of(context).colorScheme.primary,
               borderRadius:
-                  BorderRadius.all(Radius.circular(widthBased(Space.S_15)))),
+                  BorderRadius.all(Radius.circular(heightBased(Space.S_15)))),
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -42,7 +42,7 @@ class CustomButton extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                         color: Colors.white,
-                        fontSize: widthBased(FontSizes.F_16))
+                        fontSize: fontPixel(FontSizes.F_16))
                     .copyWith(
                   color: Theme.of(context).colorScheme.onSecondary,
                 ),
@@ -53,7 +53,9 @@ class CustomButton extends StatelessWidget {
                 bottom: 0,
                 child: SvgPicture.asset(
                   Images.arrow,
-                  fit: BoxFit.scaleDown,
+                  height: heightBased(30),
+                  width: heightBased(30),
+                  fit: BoxFit.cover,
                 ),
               )
             ],

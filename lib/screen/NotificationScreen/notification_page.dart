@@ -14,38 +14,38 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Align(
+        title: Align(
             alignment: Alignment.centerLeft,
             child: Text(
               Strings.Notification,
-              style: TextStyle(fontSize: FontSizes.F_24),
+              style: TextStyle(fontSize: fontPixel(FontSizes.F_24)),
             )),
         leading: InkWell(
-          onTap: () => Navigator.pop(context),
-          child: SvgPicture.asset(
-            Images.back,
-            fit: BoxFit.scaleDown,
-          ),
-        ),
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back,
+              size: heightBased(22),
+              color: Color(0xFF120D26),
+            )),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(top: Space.S_20),
+          padding: EdgeInsets.only(top: heightBased(Space.S_20)),
           child: Center(
             child: SizedBox(
               width: screenWidth * 0.9,
               child: Column(
                 children: [
-                  // RequestNotification(button: true),
-                  // SizedBox(
-                  //   height: Space.S_20,
-                  // ),
-                  // RequestNotification(button: false),
-                  // SizedBox(
-                  //   height: Space.S_20,
-                  // ),
-                  // RequestNotification(button: true),
-                  EmptyNotification()
+                  RequestNotification(button: true),
+                  SizedBox(
+                    height: heightBased(Space.S_20),
+                  ),
+                  RequestNotification(button: false),
+                  SizedBox(
+                    height: heightBased(Space.S_20),
+                  ),
+                  RequestNotification(button: true),
+                  // EmptyNotification()
                 ],
               ),
             ),

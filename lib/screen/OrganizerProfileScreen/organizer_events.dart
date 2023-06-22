@@ -13,10 +13,10 @@ class OrganizerEvents extends StatelessWidget {
         Card(
           elevation: 4,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(widthBased(RadiusSize.R_16)),
+            borderRadius: BorderRadius.circular(heightBased(RadiusSize.R_16)),
           ),
           child: Container(
-            padding: EdgeInsets.all(widthBased(Space.S_8)),
+            padding: EdgeInsets.all(heightBased(Space.S_8)),
             child: Row(
               children: [
                 Image(
@@ -25,7 +25,7 @@ class OrganizerEvents extends StatelessWidget {
                   image: const AssetImage(Images.event_1),
                 ),
                 SizedBox(
-                  width: widthBased(Space.S_14),
+                  width: heightBased(Space.S_14),
                 ),
                 Flexible(
                   child: Column(
@@ -42,7 +42,7 @@ class OrganizerEvents extends StatelessWidget {
                       ),
                       Text(
                         'Jo Malone London’s Mother’s Day Presents',
-                        style: TextStyle(fontSize: widthBased(FontSizes.F_15)),
+                        style: TextStyle(fontSize: fontPixel(FontSizes.F_15)),
                       ),
                       SizedBox(
                         height: heightBased(Space.S_8),

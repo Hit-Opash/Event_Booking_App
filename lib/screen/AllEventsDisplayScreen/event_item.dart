@@ -13,10 +13,10 @@ class EventItem extends StatelessWidget {
       child: Card(
         elevation: 4,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(widthBased(RadiusSize.R_16)),
+          borderRadius: BorderRadius.circular(heightBased(RadiusSize.R_16)),
         ),
         child: Container(
-          padding: EdgeInsets.all(widthBased(Space.S_8)),
+          padding: EdgeInsets.all(heightBased(Space.S_8)),
           child: Row(
             children: [
               Image(
@@ -25,7 +25,7 @@ class EventItem extends StatelessWidget {
                 image: const AssetImage(Images.event_1),
               ),
               SizedBox(
-                width: widthBased(Space.S_14),
+                width: heightBased(Space.S_14),
               ),
               Expanded(
                 child: Column(
@@ -42,7 +42,7 @@ class EventItem extends StatelessWidget {
                     ),
                     Text(
                       'Jo Malone London’s Mother’s Day Presents',
-                      style: TextStyle(fontSize: widthBased(FontSizes.F_15)),
+                      style: TextStyle(fontSize: fontPixel(FontSizes.F_15)),
                     ),
                     SizedBox(
                       height: heightBased(Space.S_8),
@@ -52,19 +52,19 @@ class EventItem extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.location_on,
-                          color: Color(0xFF747688),
-                          size: widthBased(16),
+                          color: const Color(0xFF747688),
+                          size: heightBased(16),
                         ),
                         SizedBox(
-                          width: widthBased(Space.S_4),
+                          width: heightBased(Space.S_4),
                         ),
                         Flexible(
                           child: Text(
                             'Radius Gallery • Santa Cfruz, CA',
                             softWrap: true,
                             style: TextStyle(
-                                color: Color(0xFF747688),
-                                fontSize: widthBased(FontSizes.F_13)),
+                                color: const Color(0xFF747688),
+                                fontSize: fontPixel(FontSizes.F_13)),
                           ),
                         ),
                       ],

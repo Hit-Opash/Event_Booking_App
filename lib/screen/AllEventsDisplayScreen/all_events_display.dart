@@ -17,26 +17,30 @@ class AllEventsDisplayScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             leading: InkWell(
-              onTap: () => Navigator.pop(context),
-              child: SvgPicture.asset(
-                Images.back,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
-            title: const Align(
+                onTap: () => Navigator.pop(context),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: heightBased(22),
+                  color: Color(0xFF120D26),
+                )),
+            title: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 Strings.Events,
-                style: TextStyle(fontSize: FontSizes.F_24),
+                style: TextStyle(fontSize: fontPixel(FontSizes.F_24)),
               ),
             ),
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: screenWidth * 0.05),
                 child: InkWell(
-                  child: SvgPicture.asset(
-                    Images.search,
-                    color: Colors.black,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: SvgPicture.asset(
+                      Images.search,
+                      height: heightBased(24),
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),

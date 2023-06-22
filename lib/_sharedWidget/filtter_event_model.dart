@@ -21,109 +21,117 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
       child: Container(
         width: screenWidth,
         padding: EdgeInsets.symmetric(
-            horizontal: screenWidth * 0.05, vertical: Space.S_34),
+            horizontal: screenWidth * 0.05, vertical: heightBased(Space.S_34)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               Strings.Filters,
-              style: TextStyle(fontSize: widthBased(FontSizes.F_24)),
+              style: TextStyle(fontSize: fontPixel(FontSizes.F_24)),
             ),
-            const SingleChildScrollView(
+            SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
-                padding: EdgeInsets.only(top: 24, left: 10, right: 10),
+                padding: EdgeInsets.only(
+                    top: heightBased(24),
+                    left: (heightBased(10)),
+                    right: heightBased(10)),
                 child: Row(children: [
                   ListOfFillterOption(),
                   SizedBox(
-                    width: 20,
+                    width: heightBased(20),
                   ),
                   ListOfFillterOption(),
                   SizedBox(
-                    width: 20,
+                    width: heightBased(20),
                   ),
                   ListOfFillterOption(),
                   SizedBox(
-                    width: 20,
+                    width: heightBased(20),
                   ),
                   ListOfFillterOption(),
                   SizedBox(
-                    width: 20,
+                    width: heightBased(20),
                   ),
                   ListOfFillterOption()
                 ]),
               ),
             ),
-            const SizedBox(
-              height: Space.S_24,
+            SizedBox(
+              height: heightBased(Space.S_24),
             ),
             Text(
               Strings.Time_Date,
-              style: TextStyle(fontSize: widthBased(FontSizes.F_16)),
+              style: TextStyle(fontSize: fontPixel(FontSizes.F_16)),
             ),
-            const SizedBox(
-              height: Space.S_14,
+            SizedBox(
+              height: heightBased(Space.S_14),
             ),
             FittedBox(
               child: Row(
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: widthBased(Space.S_20),
-                          vertical: widthBased(Space.S_10)),
                       elevation: 0,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: heightBased(Space.S_20),
+                          vertical: heightBased(Space.S_12)),
                       backgroundColor: const Color(0xFFFFFFFF),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(RadiusSize.R_10),
+                          borderRadius: BorderRadius.circular(
+                              heightBased(RadiusSize.R_10)),
                           side: const BorderSide(
                               style: BorderStyle.solid,
                               color: Color(0xFFEEEEEE))),
                     ),
-                    child: Text(
-                      Strings.Today,
-                      style: TextStyle(
-                          color: const Color(
-                            0xFF706D6D,
-                          ),
-                          fontSize: widthBased(FontSizes.F_15)),
+                    child: FittedBox(
+                      child: Text(
+                        Strings.Today,
+                        style: TextStyle(
+                            color: const Color(
+                              0xFF706D6D,
+                            ),
+                            fontSize: heightBased(FontSizes.F_15)),
+                      ),
                     ),
                     onPressed: () {},
                   ),
                   SizedBox(
-                    width: widthBased(Space.S_12),
+                    width: heightBased(Space.S_12),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          horizontal: widthBased(Space.S_20),
-                          vertical: widthBased(Space.S_10)),
+                          horizontal: heightBased(Space.S_20),
+                          vertical: heightBased(Space.S_12)),
                       elevation: 0,
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(RadiusSize.R_10),
+                        borderRadius:
+                            BorderRadius.circular(heightBased(RadiusSize.R_10)),
                       ),
                     ),
                     child: Text(
                       Strings.Tomorrow,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: widthBased(FontSizes.F_15)),
+                          fontSize: heightBased(FontSizes.F_15)),
                     ),
                     onPressed: () {},
                   ),
                   SizedBox(
-                    width: widthBased(Space.S_12),
+                    width: heightBased(Space.S_12),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          horizontal: widthBased(Space.S_20),
-                          vertical: widthBased(Space.S_10)),
+                          horizontal: heightBased(Space.S_20),
+                          vertical: heightBased(Space.S_12)),
                       elevation: 0,
                       backgroundColor: const Color(0xFFFFFFFF),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(RadiusSize.R_10),
+                          borderRadius: BorderRadius.circular(
+                              heightBased(RadiusSize.R_10)),
                           side: const BorderSide(
                               style: BorderStyle.solid,
                               color: Color(0xFFEEEEEE))),
@@ -134,47 +142,51 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                           color: const Color(
                             0xFF706D6D,
                           ),
-                          fontSize: widthBased(FontSizes.F_15)),
+                          fontSize: heightBased(FontSizes.F_15)),
                     ),
                     onPressed: () {},
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: Space.S_24,
+            SizedBox(
+              height: heightBased(Space.S_14),
             ),
             FittedBox(
               child: InkWell(
                 onTap: () {},
-                borderRadius: BorderRadius.circular(RadiusSize.R_12),
+                borderRadius:
+                    BorderRadius.circular(heightBased(RadiusSize.R_12)),
                 child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Color(0xFFEEEEEE)),
-                      borderRadius: BorderRadius.circular(RadiusSize.R_12)),
+                      borderRadius:
+                          BorderRadius.circular(heightBased(RadiusSize.R_12))),
                   padding: EdgeInsets.symmetric(
-                      horizontal: widthBased(Space.S_10),
-                      vertical: widthBased(Space.S_14)),
+                      horizontal: heightBased(Space.S_10),
+                      vertical: heightBased(Space.S_14)),
                   child: Row(
                     children: [
                       Icon(
                         Icons.event_note_sharp,
+                        size: heightBased(24),
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       SizedBox(
-                        width: widthBased(Space.S_6),
+                        width: heightBased(Space.S_6),
                       ),
                       Text(
                         Strings.Choose_From_Calender,
                         style: TextStyle(
-                            fontSize: widthBased(FontSizes.F_15),
+                            fontSize: fontPixel(FontSizes.F_15),
                             color: Color(0xFF807A7A)),
                       ),
                       SizedBox(
-                        width: widthBased(Space.S_6),
+                        width: heightBased(Space.S_6),
                       ),
                       Icon(
                         Icons.keyboard_arrow_right,
+                        size: heightBased(20),
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ],
@@ -182,63 +194,66 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: Space.S_24,
+            SizedBox(
+              height: heightBased(Space.S_24),
             ),
             Text(
               Strings.Location,
-              style: TextStyle(fontSize: widthBased(FontSizes.F_16)),
+              style: TextStyle(fontSize: fontPixel(FontSizes.F_16)),
             ),
             const SizedBox(
               height: Space.S_14,
             ),
             InkWell(
               onTap: () {},
-              borderRadius: BorderRadius.circular(RadiusSize.R_12),
+              borderRadius: BorderRadius.circular(heightBased(RadiusSize.R_12)),
               child: Container(
                 decoration: BoxDecoration(
                     border: Border.all(color: Color(0xFFEEEEEE)),
-                    borderRadius: BorderRadius.circular(RadiusSize.R_12)),
+                    borderRadius:
+                        BorderRadius.circular(heightBased(RadiusSize.R_12))),
                 padding: EdgeInsets.symmetric(
-                    horizontal: widthBased(Space.S_10),
-                    vertical: widthBased(Space.S_14)),
+                    horizontal: heightBased(Space.S_10),
+                    vertical: heightBased(Space.S_14)),
                 child: Row(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(widthBased(Space.S_8)),
+                      padding: EdgeInsets.all(heightBased(Space.S_8)),
                       decoration: BoxDecoration(
                           color: const Color(0xFF5D56F3).withOpacity(0.1),
-                          borderRadius: const BorderRadius.all(
-                              Radius.circular(RadiusSize.R_12))),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(heightBased(RadiusSize.R_12)))),
                       child: Container(
-                        padding: EdgeInsets.all(widthBased(Space.S_6)),
-                        decoration: const BoxDecoration(
+                        padding: EdgeInsets.all(heightBased(Space.S_6)),
+                        decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.all(
-                                Radius.circular(RadiusSize.R_12))),
+                                Radius.circular(heightBased(RadiusSize.R_12)))),
                         child: Icon(
                           Icons.location_on,
+                          size: heightBased(15),
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: widthBased(Space.S_6),
+                      width: heightBased(Space.S_6),
                     ),
                     Text(
                       'New Yourk, USA',
                       style: TextStyle(
-                        fontSize: widthBased(FontSizes.F_16),
+                        fontSize: heightBased(FontSizes.F_16),
                       ),
                     ),
                     SizedBox(
-                      width: widthBased(Space.S_6),
+                      width: heightBased(Space.S_6),
                     ),
                     Expanded(
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.keyboard_arrow_right,
+                          size: heightBased(24),
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
@@ -247,26 +262,26 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: Space.S_24,
+            SizedBox(
+              height: heightBased(Space.S_24),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   Strings.Select_Price_Range,
-                  style: TextStyle(fontSize: widthBased(FontSizes.F_16)),
+                  style: TextStyle(fontSize: fontPixel(FontSizes.F_16)),
                 ),
                 Text(
                   '\$${_currentRangeValues.start.round().toString()}-\$${_currentRangeValues.end.round().toString()}',
                   style: TextStyle(
-                      fontSize: widthBased(FontSizes.F_18),
+                      fontSize: fontPixel(FontSizes.F_18),
                       color: Theme.of(context).colorScheme.primary),
                 ),
               ],
             ),
             SizedBox(
-              height: widthBased(Space.S_14),
+              height: heightBased(Space.S_14),
             ),
             RangeSlider(
               values: _currentRangeValues,
@@ -284,7 +299,7 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
               },
             ),
             SizedBox(
-              height: widthBased(Space.S_24),
+              height: heightBased(Space.S_24),
             ),
             Row(
               children: [
@@ -293,12 +308,13 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          horizontal: widthBased(Space.S_10),
-                          vertical: widthBased(Space.S_14)),
+                          horizontal: heightBased(Space.S_10),
+                          vertical: heightBased(Space.S_14)),
                       elevation: 0,
                       backgroundColor: const Color(0xFFFFFFFF),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(RadiusSize.R_10),
+                          borderRadius: BorderRadius.circular(
+                              heightBased(RadiusSize.R_10)),
                           side: const BorderSide(
                               style: BorderStyle.solid,
                               color: Color(0xFFEEEEEE))),
@@ -310,7 +326,7 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                           color: const Color(
                             0xFF706D6D,
                           ),
-                          fontSize: widthBased(FontSizes.F_15),
+                          fontSize: fontPixel(FontSizes.F_15),
                         ),
                       ),
                     ),
@@ -318,19 +334,20 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                   ),
                 ),
                 SizedBox(
-                  width: widthBased(Space.S_20),
+                  width: heightBased(Space.S_20),
                 ),
                 Expanded(
                   flex: 3,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
-                          horizontal: widthBased(Space.S_10),
-                          vertical: widthBased(Space.S_14)),
+                          horizontal: heightBased(Space.S_10),
+                          vertical: heightBased(Space.S_14)),
                       elevation: 0,
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(RadiusSize.R_10),
+                        borderRadius:
+                            BorderRadius.circular(heightBased(RadiusSize.R_10)),
                       ),
                     ),
                     child: FittedBox(
@@ -338,7 +355,7 @@ class _FiltterEventModelState extends State<FiltterEventModel> {
                         Strings.Apply,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: widthBased(FontSizes.F_15)),
+                            fontSize: fontPixel(FontSizes.F_15)),
                       ),
                     ),
                     onPressed: () {
@@ -363,7 +380,7 @@ class ListOfFillterOption extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(widthBased(Space.S_14)),
+          padding: EdgeInsets.all(heightBased(Space.S_14)),
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -376,7 +393,7 @@ class ListOfFillterOption extends StatelessWidget {
               borderRadius: BorderRadius.circular(100)),
           child: SvgPicture.asset(
             Images.sports,
-            height: widthBased(30),
+            height: heightBased(30),
             color: Colors.white,
           ),
         ),
@@ -385,7 +402,7 @@ class ListOfFillterOption extends StatelessWidget {
         ),
         Text(
           Strings.Sports,
-          style: TextStyle(fontSize: widthBased(FontSizes.F_14)),
+          style: TextStyle(fontSize: fontPixel(FontSizes.F_14)),
         )
       ],
     );

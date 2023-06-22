@@ -20,26 +20,40 @@ class CommonTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          prefixIcon: prefixIcon != null
-              ? SvgPicture.asset(
-                  prefixIcon!,
-                  fit: BoxFit.scaleDown,
-                )
-              : null,
-          suffixIcon: suffixIcon != null
-              ? SvgPicture.asset(
-                  suffixIcon!,
-                  fit: BoxFit.scaleDown,
-                  color: suffixIconColor,
-                )
-              : null,
-          border: OutlineInputBorder(
-            borderRadius:
-                BorderRadius.all(Radius.circular(heightBased(RadiusSize.R_12))),
-          ),
-          hintText: hintText),
+    return SizedBox(
+      height: heightBased(56),
+      child: TextField(
+        style: TextStyle(fontSize: fontPixel(FontSizes.F_15)),
+        decoration: InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(vertical: heightBased(Space.S_18)),
+            prefixIcon: prefixIcon != null
+                ? FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: SvgPicture.asset(
+                      prefixIcon!,
+                      height: heightBased(24),
+                      width: heightBased(24),
+                    ),
+                  )
+                : null,
+            suffixIcon: suffixIcon != null
+                ? FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: SvgPicture.asset(
+                      suffixIcon!,
+                      height: heightBased(24),
+                      width: heightBased(24),
+                      color: suffixIconColor,
+                    ),
+                  )
+                : null,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(heightBased(RadiusSize.R_12))),
+            ),
+            hintText: hintText),
+      ),
     );
   }
 }
