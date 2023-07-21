@@ -3,18 +3,78 @@ import 'package:event_booking_app/_sharedUtils/strings.dart';
 import 'package:event_booking_app/_sharedWidget/custom_widget/button.dart';
 import 'package:event_booking_app/scale/scaling.dart';
 import 'package:event_booking_app/scale/sizes.dart';
+import 'package:event_booking_app/screen/HomeScreen/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pinput.dart';
 
+import 'package:email_otp/email_otp.dart';
+
+EmailOTP myauth = EmailOTP();
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class EmailValidationScreen extends StatefulWidget {
-  const EmailValidationScreen({super.key});
+  const EmailValidationScreen(
+      {super.key,
+      required this.userName,
+      required this.email,
+      required this.password,
+      required this.otpAuth});
+
+  final String userName;
+  final String email;
+  final String password;
+  final EmailOTP otpAuth;
 
   @override
   State<EmailValidationScreen> createState() => _EmailValidationScreenState();
 }
 
 class _EmailValidationScreenState extends State<EmailValidationScreen> {
+  final otpController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    otpController.dispose();
+    super.dispose();
+  }
+
+  void _register() async {
+    try {
+      final user = (await _auth.createUserWithEmailAndPassword(
+        email: widget.email,
+        password: widget.password,
+      ))
+          .user;
+
+      if (user != null) {
+        user.updateDisplayName(widget.userName);
+        print(user);
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeScreen(),
+            ));
+      } else {
+        print('not signUp');
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Error on server side please try after some time'),
+        ));
+      }
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message.toString()),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -73,7 +133,7 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  Strings.Verify_D2 + '@gmail.com',
+                  Strings.Verify_D2 + widget.email,
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),
@@ -84,13 +144,26 @@ class _EmailValidationScreenState extends State<EmailValidationScreen> {
                 defaultPinTheme: defaultPinTheme,
                 focusedPinTheme: focusedPinTheme,
                 showCursor: true,
+                controller: otpController,
               ),
               SizedBox(
                 height: heightBased(Space.S_44),
               ),
               CustomButton(
                 lable: Strings.Continue,
-                onPress: () {},
+                onPress: () async {
+                  if (await myauth.verifyOTP(otp: otpController.text) == true) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("OTP is verified"),
+                    ));
+                    // _register();
+                  } else {
+                    ScaffoldMessenger.of(context).clearSnackBars();
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text("Invalid OTP"),
+                    ));
+                  }
+                },
               ),
               SizedBox(
                 height: heightBased(Space.S_24),

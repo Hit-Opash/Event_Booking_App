@@ -7,9 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.toggleAnimation});
+  const CustomAppBar(
+      {super.key,
+      required this.toggleAnimation,
+      required this.animationController});
 
   final Function() toggleAnimation;
+  final AnimationController animationController;
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +51,18 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () => toggleAnimation(),
-                      child: SvgPicture.asset(
-                        Images.drawerBar,
-                        height: heightBased(24),
-                        width: heightBased(19),
-                      ),
-                    ),
+                        onTap: () => toggleAnimation(),
+                        child: animationController.isDismissed
+                            ? SvgPicture.asset(
+                                Images.drawerBar,
+                                height: heightBased(24),
+                                width: heightBased(19),
+                              )
+                            : Icon(
+                                Icons.close,
+                                color: Colors.white,
+                                size: heightBased(38),
+                              )),
                     Column(
                       children: [
                         Text(

@@ -18,6 +18,7 @@ class CustomThemeData {
     return ThemeData(
       colorScheme: colorScheme,
       textTheme: textTheme,
+      fontFamily: 'AirbnbCereal',
       appBarTheme: AppBarTheme(
         backgroundColor: colorScheme.background,
         elevation: 0,
@@ -49,8 +50,8 @@ class CustomThemeData {
     surface: Color(0xFFFAFBFB),
     onSurface: Color(0xFF5669FF),
     onBackground: Colors.white,
-    error: _lightFillColor,
-    onError: _lightFillColor,
+    error: Colors.red,
+    onError: Colors.red,
     onPrimary: Color(0XFF120D26),
     onSecondary: Color(0xFFFFFFFF),
     brightness: Brightness.light,

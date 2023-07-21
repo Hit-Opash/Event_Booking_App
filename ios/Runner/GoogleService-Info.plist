@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1061084554386-5fidos6rm5lcemgs4b3vuevnivosqrch.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1061084554386-5fidos6rm5lcemgs4b3vuevnivosqrch</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1061084554386-6t41i65rd5av6lhq6u0bgkipmvgngfli.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyARZWXvG5Nze_WWhKCXJNSKM5Y-Mc9Oud8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1061084554386</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.eventBookingApp</string>
+	<key>PROJECT_ID</key>
+	<string>eventbookingapp-7a883</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eventbookingapp-7a883.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1061084554386:ios:3c97f2da5dec71bd8c324b</string>
+</dict>
+</plist>

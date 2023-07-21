@@ -14,14 +14,14 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(
-      const Duration(milliseconds: 3000),
-      () => Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FeaturePage(),
-          )),
-    );
+    // Future.delayed(
+    //   const Duration(milliseconds: 3000),
+    //   () => Navigator.pushReplacement(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => const FeaturePage(),
+    //       )),
+    // );
   }
 
   @override

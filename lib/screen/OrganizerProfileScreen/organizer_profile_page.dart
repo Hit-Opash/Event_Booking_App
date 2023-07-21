@@ -186,8 +186,11 @@ class OrganizerProfileScreen extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.only(top: heightBased(Space.S_20)),
-                    child: const TabBarView(children: [
-                      Text('data1'),
+                    child: TabBarView(children: [
+                      Text(
+                        'Enjoy your favorite dishe and a lovely your friends and family and have a great time. Food from local food trucks will be available for purchase. ',
+                        style: Theme.of(context).textTheme.labelMedium!,
+                      ),
                       OrganizerEvents(),
                       ReviewList(),
                     ]),

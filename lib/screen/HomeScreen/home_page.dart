@@ -1,5 +1,6 @@
 import 'package:event_booking_app/_sharedUtils/images.dart';
 import 'package:event_booking_app/_sharedUtils/strings.dart';
+import 'package:event_booking_app/_sharedWidget/create_event_model.dart';
 import 'package:event_booking_app/_sharedWidget/custom_widget/appbar.dart';
 import 'package:event_booking_app/_sharedWidget/event_card.dart';
 import 'package:event_booking_app/model/menu.dart';
@@ -10,9 +11,13 @@ import 'package:event_booking_app/screen/EventsTab/events_tab.dart';
 import 'package:event_booking_app/screen/MyProfileScreen/myprofile_page.dart';
 import 'package:event_booking_app/screen/NotificationScreen/notification_page.dart';
 import 'package:event_booking_app/screen/SignInScreen/signin_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+final FirebaseAuth auth = FirebaseAuth.instance;
+final user = auth.currentUser;
 final typeOfEvent = [
   MenuModel(image: Images.sports, title: Strings.Sports, color: 0xFFF0635A),
   MenuModel(image: Images.music, title: Strings.Music, color: 0xFFF59762),
@@ -30,9 +35,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   int _selectedIndex = 0;
+  late AnimationController _animationController;
 
   void initState() {
+    print(user);
     _selectedIndex = 0;
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     super.initState();
   }
 
@@ -44,38 +53,56 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             MaterialPageRoute(
               builder: (context) => const EventsTab(),
             ));
+      } else if (index == 3) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MyProfileScreen(),
+            ));
       }
     });
   }
 
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  _toggleAnimation() {
+    _animationController.isDismissed
+        ? _animationController.forward()
+        : _animationController.reverse();
+  }
+
+  void _createEventPress() {
+    showModalBottomSheet(
+      useSafeArea: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+              top: Radius.circular(heightBased(RadiusSize.R_30)))),
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => const FractionallySizedBox(
+        heightFactor: 0.9,
+        child: CreateEventModel(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    AnimationController _animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     final rightSlide = MediaQuery.of(context).size.width * 0.6;
-
-    @override
-    void initState() {
-      _animationController = AnimationController(
-          vsync: this, duration: Duration(milliseconds: 300));
-    }
-
-    @override
-    void dispose() {
-      _animationController.dispose();
-      super.dispose();
-    }
-
-    _toggleAnimation() {
-      _animationController.isDismissed
-          ? _animationController.forward()
-          : _animationController.reverse();
-    }
 
     return AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
           // Related Scale and Translate values
+          // print(_animationController.value.toString()); // change value between 0 and 1 and vice versa
           double slide = rightSlide * _animationController.value;
           double scale = 1 - (_animationController.value * 0.3);
 
@@ -108,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                       height: heightBased(12),
                                     ),
                                     Text(
-                                      'Ashfak Sayem',
+                                      'Hit Doshi',
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium,
@@ -154,7 +181,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         fontSize: heightBased(FontSizes.F_8),
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  textStyle: TextStyle(color: Colors.amber),
+                                  textStyle:
+                                      const TextStyle(color: Colors.amber),
                                   child: SvgPicture.asset(
                                     Images.message,
                                     height: heightBased(24),
@@ -274,12 +302,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                   // ...
                                   // Then close the drawer
                                   _toggleAnimation();
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SignInPage(),
-                                      ));
+                                  // Navigator.pushReplacement(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //       builder: (context) =>
+                                  //           const SignInPage(),
+                                  //     ));
+                                  _signOut();
                                 },
                               ),
                             ],
@@ -321,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   ..scale(scale),
                 alignment: Alignment.center,
                 child: Container(
-                  decoration: BoxDecoration(boxShadow: [
+                  decoration: const BoxDecoration(boxShadow: [
                     BoxShadow(
                         offset: Offset(-10, 0), blurRadius: 50, spreadRadius: 0)
                   ]),
@@ -386,7 +415,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         width: heightBased(50),
                         child: FittedBox(
                           child: FloatingActionButton(
-                            onPressed: () {},
+                            onPressed: _createEventPress,
                             tooltip: 'Add Event',
                             backgroundColor:
                                 Theme.of(context).colorScheme.primary,
@@ -400,7 +429,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         alignment: Alignment.center,
                         child: Column(
                           children: [
-                            CustomAppBar(toggleAnimation: _toggleAnimation),
+                            CustomAppBar(
+                                toggleAnimation: _toggleAnimation,
+                                animationController: _animationController),
                             Container(
                               transform: Matrix4.translationValues(
                                   0.0, heightBased(-40), .0),

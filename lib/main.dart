@@ -13,9 +13,13 @@ import 'package:event_booking_app/screen/SignInScreen/signin_page.dart';
 import 'package:event_booking_app/screen/SignUpScreen/signup_page.dart';
 import 'package:event_booking_app/screen/SplashScreen/splash_page.dart';
 import 'package:event_booking_app/themes/theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const EventBookingApp());
 }
 
@@ -29,7 +33,21 @@ class EventBookingApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomThemeData.lightThemeData,
-      home: const SplashPage(),
+      themeMode: ThemeMode.light,
+      home: _getLandingPage(),
     );
   }
+}
+
+Widget _getLandingPage() {
+  return StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (ctx, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const SplashPage();
+        } else if (snapshot.hasData) {
+          return const HomeScreen();
+        }
+        return const SignInPage();
+      });
 }

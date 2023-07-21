@@ -62,9 +62,10 @@ class EventDetailsScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   Strings.Event_Details,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: heightBased(FontSizes.F_18)),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium!
+                                      .copyWith(color: Colors.white),
                                 )
                               ],
                             ),

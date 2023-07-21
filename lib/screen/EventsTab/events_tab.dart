@@ -85,6 +85,7 @@ class EventsTab extends StatelessWidget {
                                       SvgPicture.asset(
                                         Images.No_Event,
                                         width: screenWidth * 0.4,
+                                        height: screenHeight * 0.2,
                                         fit: BoxFit.contain,
                                       ),
                                       SizedBox(
@@ -135,7 +136,12 @@ class EventsTab extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const Text('data2'),
+                          Center(
+                              child: Text(
+                            'Nothing...',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary),
+                          )),
                           // MyPostTab(),
                           // MyReelsTab(),
                           // MyTagTab(),
